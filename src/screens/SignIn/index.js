@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import {View} from 'react-native';
+import {View, BackHandler} from 'react-native';
 
 import {Text, Icon} from './styles';
 import {ScreenContainer, Title} from '../../global.style';
@@ -15,7 +15,7 @@ const SignIn = () => {
   return (
     // eslint-disable-next-line react-native/no-inline-styles
     <ScreenContainer style={{justifyContent: 'space-evenly'}}>
-      <Icon name="left" size={22} />
+      <Icon name="left" size={22} onPress={() => BackHandler.exitApp()} />
 
       <Title>Acesse sua conta</Title>
 
