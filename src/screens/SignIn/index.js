@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import Button from '../../components/Button';
+import Button from '../../components/buttons/Button';
 import Input from '../../components/Input';
 import {View, BackHandler} from 'react-native';
 

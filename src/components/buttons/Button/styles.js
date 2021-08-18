@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import {BaseText} from '../../global.style';
+import {BaseText} from '../../../global.style';
 
 export const ButtonContainer = styled.TouchableOpacity`
   width: 100%;
