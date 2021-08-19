@@ -1,7 +1,3 @@
-/**
- * cinza 1 = #C6CDCE
- */
-
 export default {
   accent: '#000000',
   danger: '#E66060',
