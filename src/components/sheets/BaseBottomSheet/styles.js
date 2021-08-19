@@ -19,7 +19,6 @@ export const Sheet = styled(Animated.View)`
   width: 100%;
   height: 80%;
   padding: 16px 16px 0px;
-  align-items: center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   background-color: ${props => props.theme.background};
@@ -35,6 +34,7 @@ export const Dash = styled.View`
 export const DashTouchArea = styled.View`
   height: 50px;
   width: 120px;
+  align-self: center;
   align-items: center;
   justify-content: center;
   margin-top: -16px;

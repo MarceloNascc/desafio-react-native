@@ -1,10 +1,11 @@
-import React, {useRef, forwardRef, useEffect} from 'react';
+import React, {useRef, forwardRef, useEffect, useState} from 'react';
 
 import {
   TouchableWithoutFeedback,
   Animated,
   Dimensions,
   PanResponder,
+  BackHandler,
 } from 'react-native';
 
 import {
@@ -37,6 +38,22 @@ const BaseBottomSheet = ({children}, sheetRef) => {
       },
     }),
   ).current;
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handler = BackHandler.addEventListener('hardwareBackPress', () => {
+      if (isOpen) {
+        sheetRef.current.hideSheet();
+
+        return true;
+      }
+
+      return false;
+    });
+
+    return () => handler.remove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sheetRef, isOpen]);
 
   useEffect(() => {
     if (sheetRef.current) {
@@ -51,7 +68,7 @@ const BaseBottomSheet = ({children}, sheetRef) => {
       toValue: 100,
       duration: 1000,
       useNativeDriver: true,
-    }).start();
+    }).start(() => setIsOpen(true));
   }
 
   function hideSheet() {
@@ -59,7 +76,7 @@ const BaseBottomSheet = ({children}, sheetRef) => {
       toValue: 0,
       duration: 1000,
       useNativeDriver: true,
-    }).start();
+    }).start(() => setIsOpen(false));
   }
 
   return (
