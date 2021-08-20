@@ -1,4 +1,4 @@
-import {LOAD, SET_LOADING} from '../actions/tasks';
+import {LOAD, SET_LOADING, ADD_TASK} from '../actions/tasks';
 
 const INITIAL_STATE = {
   loading: false,
@@ -11,6 +11,12 @@ const tasks = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         tasks: action.tasks,
+      };
+
+    case ADD_TASK:
+      return {
+        ...state,
+        tasks: [...state.tasks, action.task],
       };
 
     case SET_LOADING:
