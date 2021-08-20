@@ -1,11 +1,20 @@
 import React from 'react';
 
-import {ButtonContainer, ButtonText} from './styles';
+import {ActivityIndicator} from 'react-native';
 
-const Button = ({action, text, extraContainerStyle}) => {
+import {ButtonContainer, ButtonText, LoadContainer} from './styles';
+import theme from '../../../theme';
+
+const Button = ({action, text, extraContainerStyle, loading}) => {
   return (
     <ButtonContainer style={extraContainerStyle} onPress={action}>
       <ButtonText>{text}</ButtonText>
+
+      {loading ? (
+        <LoadContainer>
+          <ActivityIndicator size={20} color={theme.background} />
+        </LoadContainer>
+      ) : null}
     </ButtonContainer>
   );
 };
