@@ -1,6 +1,7 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 
-import {FlatList, StatusBar} from 'react-native';
+import {FlatList} from 'react-native';
 import Task from '../../components/Task';
 import FloatButton from '../../components/buttons/FloatButton';
 import Fontisto from 'react-native-vector-icons/Fontisto';
@@ -11,17 +12,22 @@ import {ScreenContainer, Title} from '../../global.style';
 import theme from '../../theme';
 
 import profilePicture from '../../assets/images/profile_picture.jpeg';
+import {changeStatusBar} from '../../store/actions/ui';
 
 const Tasks = () => {
+  const dispatch = useDispatch();
   const sheetRef = useRef();
+
+  useEffect(() => {
+    dispatch(changeStatusBar(theme.grayText, 'light-content'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
       <ScreenContainer
         style={{backgroundColor: theme.grayText}}
         withoutHorizontalPadding>
-        <StatusBar barStyle="light-content" backgroundColor={theme.grayText} />
-
         <Row>
           <Image source={profilePicture} />
           <Title isWhite>Olá, João Marcelo</Title>
