@@ -36,7 +36,7 @@ export function signIn(email, password) {
     dispatch(setLoading(true));
 
     try {
-      const response = await api.post('/auth/', {
+      const response = await api.post('/api/auth/', {
         username: email,
         password,
       });
